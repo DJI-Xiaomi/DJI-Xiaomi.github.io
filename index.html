@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金梦的备考空间 - 2026春季高考冲刺</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --secondary: #ff6b9c;
+            --accent: #4dabf7;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gradient: linear-gradient(135deg, #8a2be2, #ff6b9c);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-title {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: fadeInDown 1s ease;
+        }
+
+        .header-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+            animation: fadeInDown 1.2s ease;
+        }
+
+        .header-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            margin-top: 10px;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--secondary);
+        }
+
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .profile-image {
+            flex: 1;
+            min-width: 280px;
+            background: var(--gradient);
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .profile-info {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .info-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .info-item h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            width: 45%;
+            padding: 15px;
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            position: relative;
+            border: 1px solid #eaeaea;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: scale(1.03);
+            border-color: var(--accent);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+            margin-right: 55%;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 55%;
+        }
+
+        .timeline-item h3 {
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .skill-card {
+            flex: 1;
+            min-width: 250px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .quote {
+            background: var(--gradient);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.3rem;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            opacity: 0.2;
+            font-family: serif;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.2);
+        }
+
+        button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0.1;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+                margin-right: 0 !important;
+            }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: span 1;
+            }
+
+            .profile-container {
+                flex-direction: column;
+            }
+        }
+
+        .computer-element {
+            position: absolute;
+            opacity: 0.05;
+            font-size: 8rem;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .ce-1 { top: 10%; right: 5%; transform: rotate(15deg); }
+        .ce-2 { bottom: 10%; left: 5%; transform: rotate(-15deg); }
+        .ce-3 { top: 40%; right: 15%; transform: rotate(5deg); }
+    </style>
+</head>
+<body>
+    <!-- 计算机元素背景 -->
+    <div class="computer-element ce-1"><i class="fas fa-code"></i></div>
+    <div class="computer-element ce-2"><i class="fas fa-laptop-code"></i></div>
+    <div class="computer-element ce-3"><i class="fas fa-terminal"></i></div>
+
+    <header>
+        <div class="particles" id="particles"></div>
+        <div class="header-content">
+            <h1 class="header-title">金梦的备考空间</h1>
+            <p class="header-subtitle">职高计算机专业 · 备战2026春季高考</p>
+            <div class="header-tag">动画制作是梦想，代码世界是未来</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 个人简介 -->
+        <section id="about">
+            <h2><i class="fas fa-user"></i> 关于金梦</h2>
+            <div class="profile-container">
+                <div class="profile-image">
+                    <div>
+                        <i class="fas fa-user-circle" style="font-size: 5rem; margin-bottom: 10px;"></i>
+                        <p>金梦 - 职高计算机专业学生</p>
+                        <p>2026春季高考备战中</p>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <p>我叫金梦，是一名职业高中计算机专业的学生。从踏入职校的第一天起，我就被计算机世界的无限可能深深吸引。特别是数字动画制作，那些在屏幕上跳动的色彩和角色，让我看到了表达自我的新方式。</p>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <h4>所在学校</h4>
+                            <p>市信息工程职业学校</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>专业方向</h4>
+                            <p>计算机应用（动画制作）</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>目标院校</h4>
+                            <p>省职业技术学院</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>高考倒计时</h4>
+                            <p id="countdown">计算中...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 高考计划 -->
+        <section id="plan">
+            <h2><i class="fas fa-calendar-check"></i> 高考备战计划</h2>
+            <p>从现在到2026年春季高考，我制定了清晰的阶段性计划，平衡专业课学习和文化课复习。</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">2023.09 - 2024.01</span>
+                    <h3>基础巩固阶段</h3>
+                    <p>重点复习计算机基础知识，掌握动画制作核心原理。每天坚持2小时文化课学习。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2024.02 - 2024.07</span>
+                    <h3>技能提升阶段</h3>
+                    <p>深入学习AE、Maya等动画软件，参与校内项目实践。开始第一轮文化课总复习。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2024.09 - 2025.01</span>
+                    <h3>专项突破阶段</h3>
+                    <p>针对高考考点进行专项训练，完成个人作品集。每周完成2套模拟试题。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2025.02 - 2025.07</span>
+                    <h3>全面冲刺阶段</h3>
+                    <p>全天候模拟训练，强化弱点。完成3个高质量动画作品，参加专业技能大赛。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2025.09 - 2026.01</span>
+                    <h3>考前调整阶段</h3>
+                    <p>回归基础，查漏补缺。调整心态，保持状态。进行最后冲刺复习。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 专业技能 -->
+        <section id="skills">
+            <h2><i class="fas fa-code"></i> 专业技能与目标</h2>
+            <p>作为计算机专业的学生，我不断提升自己的专业技能，为高考和未来职业发展做准备。</p>
+
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3><i class="fas fa-paint-brush"></i> 动画制作</h3>
+                    <p>熟练掌握After Effects、Blender等软件，能制作2D/3D基础动画。目标高考前完成5个完整作品。</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3><i class="fas fa-laptop-code"></i> 编程基础</h3>
+                    <p>掌握Python和JavaScript基础，能编写简单动画脚本。目标高考前完成1个互动动画项目。</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 65%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3><i class="fas fa-book"></i> 文化课复习</h3>
+                    <p>重点突破数学和英语，每天坚持2小时学习。目标高考文化课达到280分以上。</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 励志寄语 -->
+        <section id="quote">
+            <div class="quote">
+                "动画不只是技术，更是情感的载体。我想用代码编织梦想，用动画讲述故事。
+                2026，职高生也能闪闪发光！"
+            </div>
+        </section>
+
+        <!-- 联系方式 -->
+        <section id="contact">
+            <h2><i class="fas fa-paper-plane"></i> 联系我</h2>
+            <p>欢迎交流学习经验、分享动画技巧，或者一起备战高考！</p>
+
+            <div class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="您的姓名" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="电子邮箱" required>
+                </div>
+                <div class="form-group full">
+                    <input type="text" placeholder="主题">
+                </div>
+                <div class="form-group full">
+                    <textarea rows="5" placeholder="想对金梦说的话..." required></textarea>
+                </div>
+                <div class="form-group full">
+                    <button type="submit"><i class="fas fa-paper-plane"></i> 发送消息</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023-2026 金梦的备考空间 | 职高计算机专业学生的高考之路</p>
+        <p>目标：2026春季高考 | 梦想：成为优秀的动画设计师</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-qq"></i></a>
+            <a href="#"><i class="fab fa-weixin"></i></a>
+            <a href="#"><i class="fab fa-bilibili"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // 创建浮动粒子背景
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // 随机大小
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                // 随机位置
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+
+                // 随机动画延迟和持续时间
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                particle.style.animationDuration = `${15 + Math.random() * 10}s`;
+
+                container.appendChild(particle);
+            }
+        }
+
+        // 高考倒计时
+        function updateCountdown() {
+            const examDate = new Date('2026-03-15'); // 假设2026年春季高考日期
+            const now = new Date();
+            const diff = examDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const years = Math.floor(days / 365);
+                const remainingDays = days % 365;
+                const months = Math.floor(remainingDays / 30);
+
+                document.getElementById('countdown').innerHTML =
+                    `${years}年${months}个月${remainingDays % 30}天`;
+            } else {
+                document.getElementById('countdown').innerHTML = "高考加油！";
+            }
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            updateCountdown();
+
+            // 每天更新倒计时
+            setInterval(updateCountdown, 86400000);
+
+            // 滚动动画效果
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, observerOptions);
+
+            // 为所有section添加观察
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = "translateY(20px)";
+                section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                observer.observe(section);
+            });
+
+            // 表单提交处理
+            const contactForm = document.querySelector('.contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('消息已"发送"！(演示功能)');
+                // 实际项目中这里会有AJAX提交到服务器
+            });
+        });
+    </script>
+</body>
+</html>
